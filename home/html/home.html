@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <h3>Search Student</h3>
+    <br>
+
     <form action="result/", method="post">
         {% csrf_token %}
         <table>
@@ -20,5 +23,49 @@
             </tr>
         </table>
     </form>
+    <br>
+    <h3>Register Student</h3>
+    <br>
+    <form action="register/", method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label>ID :</label></td>
+                <td><input type="text" name="sid"/><br></td>
+            </tr>
+            <tr>
+                <td><label>Name</label></td>
+                <td><input type="text" name="name"/><br></td>
+            </tr>
+            <tr>
+                <td><label>Phone Number</label></td>
+                <td><input type="text" name="phone"/><br></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><input type="text" name="address"/><br></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Register"/></td>
+            </tr>
+        </table>
+    </form>
+
+    <h3>Delete Student</h3>
+    <br>
+
+    <form action="delete/", method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label>SID</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sid"/><br></td>
+                <td><input type="submit" value="Delete"/></td>
+            </tr>
+        </table>
+    </form>
+
 </body>
 </html>

@@ -22,6 +22,8 @@ import potato.view
 urlpatterns = [
     path('', potato.view.Home),
     path('result/', potato.view.Result),
+    path('register/', potato.view.Register),
+    path('delete/', potato.view.Delete),
     path('admin/', admin.site.urls),
 ]
 

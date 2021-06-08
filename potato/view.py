@@ -19,6 +19,8 @@ data = db.get_student()
 DB_NAME = "students.sqlite3"
 STUDENT_TABLE = "student"
 
+db = Student_DB(DB_NAME, STUDENT_TABLE)
+
 
 def Home(request):
     return render(request, 'home.html')
@@ -26,12 +28,20 @@ def Home(request):
 
 def Result(request):
     name = request.POST.get("name")
-    db = Student_DB(DB_NAME, STUDENT_TABLE)
-    # ---
-    db.add_student("S01", "Sai Htet Myat Htut", "09111222333", "Yangon")
-    db.add_student("S02", "Thida Win", "09222333444", "Mandalay")
-    db.add_student("S03", "Htet Myo San", "09333444555", "Taunggyi")
-    db.add_student("S03", "Thura Khant Thein", "09555666777", "Yangon")
-    # ---
     student = db.get_student_id(name=name)
     return render(request, 'result.html', {"name": student})
+
+
+def Register(request):
+    sid = request.POST.get("sid")
+    name = request.POST.get("name")
+    phone = request.POST.get("phone")
+    address = request.POST.get("address")
+    db.add_student(sid, name, phone, address)
+    return render(request, 'register.html')
+
+
+def Delete(request):
+    sid = request.POST.get("sid")
+    msg = db.remove_student(sid)
+    return render(request, 'delete.html', {"message": msg})
